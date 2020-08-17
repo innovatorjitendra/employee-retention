@@ -20,7 +20,7 @@ from apps.core.config import Config
 app = Flask(__name__)
 dashboard.bind(app)
 CORS(app)
-@app.route('/', methods=['POST','GET'])
+@app.route('/', methods=['GET'])
 def index_page():
    
     return render_template('index.html')
@@ -28,7 +28,7 @@ def index_page():
 
 
 
-@app.route('/training', methods=['GET','POST'])
+@app.route('/training', methods=['POST'])
 @cross_origin()
 def training_route_client():
    
@@ -49,7 +49,7 @@ def training_route_client():
     except Exception as e:
         return Response("Error Occurred! %s" % e)
 
-@app.route('/batchprediction', methods=['GET','POST'])
+@app.route('/batchprediction', methods=['POST'])
 @cross_origin()
 def batch_prediction_route_client():
     
@@ -71,7 +71,7 @@ def batch_prediction_route_client():
         return Response("Error Occurred! %s" % e)
 
 
-@app.route('/prediction', methods=['GET','POST'])
+@app.route('/prediction', methods=['POST'])
 @cross_origin()
 def single_prediction_route_client():
    
